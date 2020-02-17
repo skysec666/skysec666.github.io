@@ -184,7 +184,7 @@
 </ul>
 <hr>
 <h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><ul>
-<li><p><strong>不要等着别人告诉你答案，要自己去学会去寻找答案</strong></p>
+<li><p><strong>不要等着别人告诉你答案，要自己学会去寻找答案</strong></p>
 </li>
 <li><p><strong>从知识和常识进行思索</strong></p>
 </li>
@@ -372,23 +372,30 @@
 <h4 id="A10：2017-InsufficientLogging-amp-Monitoring（不足的记录和监控漏洞）"><a href="#A10：2017-InsufficientLogging-amp-Monitoring（不足的记录和监控漏洞）" class="headerlink" title="A10：2017-InsufficientLogging &amp; Monitoring（不足的记录和监控漏洞）"></a>A10：2017-InsufficientLogging &amp; Monitoring（不足的记录和监控漏洞）</h4><p>不足的记录和监控漏洞，再加上事件响应能力欠缺以及缺少有效的整合，使得攻击者可以进一步攻击系统，维持其持久性，转而攻击更多的系统，并篡改、提取或销毁数据。大部分的数据泄露研究显示，检测出发生数据泄漏的时间通常需要超过<strong>200</strong>天，而且通常是外部机构率先发现数据泄漏的事实，而不是通过内部的审计流程或监控发现的。</p>
 <hr>
 <h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p><strong>SQL</strong> 注入漏洞是发生于应用程序与数据库层的安全漏洞。简而言之，是在输入的字符串之中注入<strong>SQL</strong>指令，在设计不良的程序当中忽略了检查，那么这些注入进去的指令就会被数据库服务器误认为是正常的 <strong>SQL</strong> 指令而运行，因此遭到破坏或是入侵。</p>
-<h4 id="SQL注入防护方法"><a href="#SQL注入防护方法" class="headerlink" title="SQL注入防护方法"></a><strong>SQL注入防护方法</strong></h4><p> 1、采用预编译参数化查询</p>
-<p> 2、对输入的特殊字符进行<strong>Escape</strong>转义处理</p>
-<p> 3、使用白名单来规范化输入验证方法</p>
-<p> 4、对客户端输入进行控制，不允许输入<strong>SQL</strong>注入相关的特殊字符</p>
-<p> 5、服务器端在提交数据库进行<strong>SQL</strong>查询之前，对特殊字符进行过滤、转义、替换、删除。</p>
-<p> 6、使用安全的<strong>API</strong>  </p>
-<p> 7、 规范编码,字符集</p>
-<p><strong>为什么参数化查询可以防止sql注入</strong></p>
-<p><strong>原理:</strong></p>
-<p>使用参数化查询数据库服务器不会把参数的内容当作<strong>sql</strong>指令的一部分来执行，是在数据库完成<strong>sql</strong>指令的编译后才套用参数运行</p>
-<p>简单的说: 参数化能防注入的原因在于,语句是语句，参数是参数，参数的值并不是语句的一部分，数据库只按语句的语义跑</p>
-<hr>
-<h4 id="SQL注入类型"><a href="#SQL注入类型" class="headerlink" title="SQL注入类型"></a>SQL注入类型</h4><p>1）报错注入</p>
-<p>2） 盲注  ——&gt;&gt; <strong>bool</strong>型注入、 延时注入</p>
-<p>3）宽字节注入</p>
+<h4 id="SQL注入类型"><a href="#SQL注入类型" class="headerlink" title="SQL注入类型"></a>SQL注入类型</h4><ul>
+<li><p><strong>报错注入</strong></p>
+<p>报错注入包括有<strong>floor</strong>函数、<strong>Extractvalue</strong>函数、<strong>Updatexml</strong>函数等。<strong>floor</strong>报错的前提是表中数据为3条以上，原因是<strong>group by</strong> 与<strong>count</strong>的冲突，<strong>Extractvalue</strong>和<strong>Updatexml</strong>是针对<strong>XML</strong>文档查询的注入函数，将文档路径处修改可以报错并返回我们需要的结果。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>盲注</strong>  </p>
+<p> <strong>bool</strong>布尔型注入、 时间盲注</p>
 <p><strong>盲注是什么？怎么盲注？</strong></p>
-<p>盲注是在<strong>SQL</strong>注入攻击过程中，服务器关闭了错误回显，我们单纯通过服务器返回内容的变化来判断是否存在<strong>SQL</strong>注入和利用的方式。盲注的手段有两种，一个是通过页面的返回内容是否正确(<strong>boolean-based</strong>)，来验证是否存在注入。一个是通过<strong>sql</strong>语句处理时间的不同来判断是否存在注入(<strong>time-based</strong>)，在这里，可以用<strong>benchmark</strong>，<strong>sleep</strong>等造成延时效果的函数，也可以通过构造大笛卡儿积的联合查询表来达到延时的目的。</p>
+<p>盲注是在<strong>SQL</strong>注入攻击过程中，服务器关闭了错误回显，我们单纯通过服务器返回内容的变化来判断是否存在<strong>SQL</strong>注入和利用的方式。盲注的手段有两种，一个e是通过页面的返回内容是否正确(<strong>boolean-based</strong>)，来验证是否存在注入。一个是通过<strong>sql</strong>语句处理时间的不同来判断是否存在注入(<strong>time-based</strong>)，在这里，可以用<strong>benchmark</strong>，<strong>sleep</strong>等造成延时效果的函数，也可以通过构造大笛卡儿积的联合查询表来达到延时的目的。</p>
+<p><strong>延时注入如何来判断？</strong> <strong>if(ascii(substr(“hello”, 1, 1))=104, sleep(5),</strong> </p>
+<p><strong>盲注和延时注入的共同点？</strong> 都是一个字符一个字符的判断</p>
+</li>
+</ul>
+<ul>
+<li><strong>联合注入</strong></li>
+</ul>
+<ul>
+<li><p><strong>二次注入</strong></p>
+<p>二次注入是因为目标只对用户提交数据进行转义，而数据以原样保存在数据库中，且从数据库中提取数据时认为数据时安全的，没有进行防护。以注册账户处为例，第一次注册<strong>admin’#</strong>，后台转义为<strong>admin</strong>,但是数据库中的用户名任然为<strong>admin ‘#</strong>,此时可以通过<strong>admin ‘#</strong>登录<strong>admin</strong>。我们不应该相信数据库中数据完全是安全的，当我们调用时也应该进行相关转义。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>宽字节注入</strong></p>
 <p><strong>宽字节注入产生原理以及根本原因</strong></p>
 <p><strong>产生原理</strong></p>
 <p>在数据库使用了宽字符集而<strong>WEB</strong>中没考虑这个问题的情况下，在<strong>WEB</strong>层，由于<strong>0XBF27</strong>是两个字符，在<strong>PHP</strong>中比如<strong>addslash</strong>和<strong>magic_quotes_gpc</strong>开启时，由于会对<strong>0x27</strong>单引号进行转义，因此<strong>0xbf27</strong>会变成<strong>0xbf5c27</strong>,而数据进入数据库中时，由于<strong>0XBF5C</strong>是一个另外的字符，因此<strong>\</strong>转义符号会被前面的<strong>bf</strong>带着”吃掉”，单引号由此逃逸出来可以用来闭合语句。</p>
@@ -397,8 +404,21 @@
 <p><strong>character_set_client</strong>(客户端的字符集)和<strong>character_set_connection</strong>(连接层的字符集)不同,或转换函数如，<strong>iconv、mb_convert_encoding</strong>使用不当。</p>
 <p><strong>解决办法</strong></p>
 <p>统一数据库、<strong>Web</strong>应用、操作系统所使用的字符集，避免解析产生差异，最好都设置为<strong>UTF-8</strong>。 或对数据进行正确的转义，如<strong>mysql_real_escape_string+mysql_set_charset</strong>的使用。</p>
-<p><strong>延时注入如何来判断？</strong> <strong>if(ascii(substr(“hello”, 1, 1))=104, sleep(5),</strong> </p>
-<p><strong>盲注和延时注入的共同点？</strong> 都是一个字符一个字符的判断</p>
+</li>
+</ul>
+<h4 id="SQL注入防护方法"><a href="#SQL注入防护方法" class="headerlink" title="SQL注入防护方法"></a><strong>SQL注入防护方法</strong></h4><p> 1、采用预编译参数化查询</p>
+<p> 2、对输入的特殊字符进行<strong>Escape</strong>转义处理</p>
+<p> 3、使用白名单来规范化输入验证方法</p>
+<p> 4、对客户端输入进行控制，不允许输入<strong>SQL</strong>注入相关的特殊字符</p>
+<p> 5、服务器端在提交数据库进行<strong>SQL</strong>查询之前，对特殊字符进行过滤、转义、替换、删除。</p>
+<p> 6、使用安全的<strong>API</strong>  </p>
+<p> 7、 规范编码,字符集</p>
+<p><strong>sql</strong>注入的防御核心原则是数据代码分离，最佳方案是采用预编译，所谓预编译就是绑定变量，这样<strong>sql</strong>语句就不会发生变化，攻击者也无法改变<strong>sql</strong>结构。如<strong>java</strong>里的<strong>PreparedStatement</strong>函数。除此之外，我们也应该统一前后端数据库编码问题，对用户提交参数进行检测，过滤、转义非法字符。也应该避免<strong>root</strong>等高级用户直接连接数据库。</p>
+<p><strong>为什么参数化查询可以防止sql注入</strong></p>
+<p><strong>原理:</strong></p>
+<p>使用参数化查询数据库服务器不会把参数的内容当作<strong>sql</strong>指令的一部分来执行，是在数据库完成<strong>sql</strong>指令的编译后才套用参数运行</p>
+<p>简单的说: 参数化能防注入的原因在于,语句是语句，参数是参数，参数的值并不是语句的一部分，数据库只按语句的语义跑</p>
+<hr>
 <h4 id="MySQL手工注入"><a href="#MySQL手工注入" class="headerlink" title="MySQL手工注入"></a>MySQL手工注入</h4><p><strong>mysql的网站注入，5.0以上和5.0以下有什么区别？</strong></p>
 <p><strong>5.0</strong>以下没有<strong>information_schema</strong>这个系统表，无法列表名等，只能暴力跑表名,跟<strong>ACCESS</strong>数据库一样。</p>
 <p><strong>5.0</strong>以下是多用户单操作，<strong>5.0</strong>以上是多用户多操作。</p>
@@ -417,12 +437,20 @@
 <p><strong>DOM型和反射型的区别</strong></p>
 <p>反射型<strong>XSS</strong>：通过诱导用户点击，我们构造好的恶意<strong>JavaScript  payload</strong>才会触发的<strong>XSS</strong>。 反射型<strong>XSS</strong>的检测我们在每次请求带<strong>payload</strong>的链接时页面应该是会带有特定的畸形数据的。</p>
 <p><strong>DOM</strong>型：通过修改页面的<strong>DOM</strong>节点形成的<strong>XSS</strong>。 <strong>DOM-based XSS</strong>由于是通过<strong>JavaScript</strong>代码进行<strong>dom</strong>操作产生的<strong>XSS</strong>，所以在请求的响应中我们甚至不一定会得到相应的畸形数据。 根本区别是输出点的不同。</p>
+<p><strong>xss绕过方式包括关键字大小写、十六进制、url、jsfuck编码、闭合便签、%00截断、双字符绕过等。</strong></p>
 <hr>
 <h3 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h3><p><strong>CSRF是跨站请求伪造攻击</strong>，<strong>XSS</strong>是实现<strong>CSRF</strong>的诸多手段中的一种，是由于没有在关键操作执行时进行是否由用户自愿发起的确认。</p>
 <h4 id="CSRF防护方法"><a href="#CSRF防护方法" class="headerlink" title="CSRF防护方法"></a><strong>CSRF防护方法</strong></h4><p>1、筛选出需要防范<strong>CSRF</strong>的页面然后嵌入<strong>Token</strong></p>
 <p>2、再次输入密码</p>
 <p>3、检验<strong>Referer</strong></p>
 <p>4、添加验证码 </p>
+<p><strong>csrf与ssrf的区别，防御手段？</strong></p>
+<p><strong>csrf：</strong>攻击者盗用你的身份，以你的名义发送恶意请求</p>
+<p>发生条件：登录受信用网站<strong>A</strong>，并存有<strong>cookie</strong></p>
+<p> 在存有<strong>A cookie</strong>的情况下访问危险网站<strong>B</strong></p>
+<p><strong>ssrf：</strong>服务端请求伪造攻击，有的大型网站在<strong>web</strong>应用上提供了从其他服务器获取数据    的功能。攻击者利用缺陷的<strong>web</strong>应用作为代理攻击远程和内网的服务器（跳板）</p>
+<p>危害：    可对内网进行端口扫描</p>
+<pre><code>对内网**web**应用进行指纹识别</code></pre><p>攻击内网<strong>web</strong>应用</p>
 <hr>
 <h3 id="xxe漏洞"><a href="#xxe漏洞" class="headerlink" title="xxe漏洞"></a>xxe漏洞</h3><p>许多过时的或配置不当的<strong>XML</strong>处理器在<strong>XML</strong>文档内进行外部实体引用。外部实体可用于泄露内部文件，通过使用文件<strong>URI</strong>处理器、内部文件共享、内部端口扫描、远程代码执行以及拒绝服务攻击等手段。</p>
 <p><strong>XXE</strong>全称是——<strong>XML External Entity</strong>,也就是<strong>XML</strong>外部实体注入攻击，漏洞是在对不安全的外部实体数据进行处理时引发的安全问题。</p>
