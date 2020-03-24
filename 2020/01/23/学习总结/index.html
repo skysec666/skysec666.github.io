@@ -355,6 +355,13 @@
 <h4 id="secpol-msc"><a href="#secpol-msc" class="headerlink" title="secpol.msc"></a>secpol.msc</h4><p><strong>secpol.msc</strong>命令用于打开本地安全策略</p>
 <h4 id="通过以下命令查找RDP服务的端口号"><a href="#通过以下命令查找RDP服务的端口号" class="headerlink" title="通过以下命令查找RDP服务的端口号"></a>通过以下命令查找RDP服务的端口号</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist &#x2F;svc | find &quot;TermService&quot;</span><br></pre></td></tr></table></figure>
 
+<h4 id="Windows-cmd-如何下载文件"><a href="#Windows-cmd-如何下载文件" class="headerlink" title="Windows cmd 如何下载文件"></a>Windows cmd 如何下载文件</h4><blockquote>
+<p>1.certutil.exe</p>
+<p>2.powershell</p>
+<p>3.bitsadmin</p>
+<p>4.vbs</p>
+<p>5.ftp</p>
+</blockquote>
 <hr>
 <h3 id="WEB容器"><a href="#WEB容器" class="headerlink" title="WEB容器"></a>WEB容器</h3><h4 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h4><p>“低版本的<strong>apache</strong>存在未知扩展名解析漏洞”的说法是错误的，正确的说法应该是使用<strong>module</strong>模式与<strong>php</strong>结合的所有版本 <strong>apache</strong>存在未知扩展名解析漏洞，使用<strong>fastcgi</strong>模式与<strong>php</strong>结合的所有版本<strong>apache</strong>不存在此漏洞。</p>
 <hr>
@@ -467,7 +474,8 @@
 <p><strong>XXE</strong>是<strong>XML</strong>外部实体注入攻击，<strong>XML</strong>中可以通过调用外部实体来请求本地或者远程内容，和远程文件保护类似，会引发相关安全问题，例如敏感文件读取、内部文件共享、内部端口扫描、远程代码执行以及拒绝服务攻击。</p>
 <h4 id="XXE防护方法"><a href="#XXE防护方法" class="headerlink" title="XXE防护方法"></a><strong>XXE防护方法</strong></h4><p><strong>XML</strong>解析库在调用时严格禁止对外部实体的解析</p>
 <hr>
-<h3 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h3><h4 id="数据库提权"><a href="#数据库提权" class="headerlink" title="数据库提权"></a>数据库提权</h4><h5 id="udf提权"><a href="#udf提权" class="headerlink" title="udf提权"></a>udf提权</h5><p>udf是用户自定义函数，是mysql数据库功能的一种扩展，利用root权限，创建带有调用cmd函数的’udf.dll’(动态链接库)。当我们把’udf.dll’导出指定文件夹引入Mysql时，其中的调用函数拿出来当作mysql的函数使用。这样我们自定义的函数才被当作本机函数执行。在使用CREAT FUNCITON调用dll中的函数后，mysql账号转化为system权限，从而来提权。</p>
+<h3 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h3><h4 id="数据库提权"><a href="#数据库提权" class="headerlink" title="数据库提权"></a>数据库提权</h4><h5 id="udf提权"><a href="#udf提权" class="headerlink" title="udf提权"></a>udf提权</h5><p>利用了root 高权限，创建带有调用cmd的函数的udf.dll动态链接库，导出 udf.dll 文件后，我们就可以直接在命令框输入 cmd</p>
+<p>udf是用户自定义函数，是mysql数据库功能的一种扩展，利用root权限，创建带有调用cmd函数的’udf.dll’(动态链接库)。当我们把’udf.dll’导出指定文件夹引入Mysql时，其中的调用函数拿出来当作mysql的函数使用。这样我们自定义的函数才被当作本机函数执行。在使用CREAT FUNCITON调用dll中的函数后，mysql账号转化为system权限，从而来提权。</p>
 <p>要求: 1.目标系统是Windows(Win2000,XP,Win2003)； 2.拥有MYSQL的某个用户账号，此账号必须有对mysql的insert和delete权限以创建和抛弃函数 3.有root账号密码 导出udf: MYSQL 5.1以上版本，必须要把udf.dll文件放到MYSQL安装目录下的lib\plugin文件夹下才能创建自定义函数 可以再mysql里输入 <code>select @@basedir</code> <code>show variables like ‘%plugins%’</code> 寻找mysql安装路径 提权:</p>
 <p>使用SQL语句创建功能函数。语法：Create Function 函数名（函数名只能为下面列表中的其中之一）returns string soname ‘导出的DLL路径’；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create function cmdshell returns string soname ‘udf.dll’</span><br><span class="line">select cmdshell(‘net user arsch arsch &#x2F;add’);</span><br><span class="line">select cmdshell(‘net localgroup administrators arsch &#x2F;add’);</span><br><span class="line"></span><br><span class="line">drop function cmdshell;</span><br></pre></td></tr></table></figure>
