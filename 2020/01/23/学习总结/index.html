@@ -337,18 +337,18 @@
 <li><hr>
 </li>
 </ol>
-<h3 id="LINUX系统"><a href="#LINUX系统" class="headerlink" title="LINUX系统"></a>LINUX系统</h3><h4 id="Linux用户类型"><a href="#Linux用户类型" class="headerlink" title="Linux用户类型"></a>Linux用户类型</h4><p><strong>Linux</strong>用户类型分为三类：超级用户、系统用户和普通用户<strong>**<br>**超级用户</strong>：用户名为<strong>root</strong>或<strong>USER ID（UID）</strong>为<strong>0</strong>的账号，具有一切权限，可以操作系统中的所有资源。<strong>Root</strong>用户可以进行基础的文件操作及特殊的系统管理，可以修改系统中的任何文件。<br>系统用户：正常运行系统时使用的账户。每个进程运行在系统里都有一个相应的属主，比如某个进程以何种身份运行，这些身份就是系统里对应的用户账号。<br>普通用户：普通使用者能使用<strong>Linux</strong>的大部分资源，一些特定的权限受到控制。用户只对自己的目录有写权限，读写权限受一定的限制，有效保证了系统安全性。</p>
+<h3 id="LINUX系统"><a href="#LINUX系统" class="headerlink" title="LINUX系统"></a>LINUX系统</h3><h4 id="Linux用户类型"><a href="#Linux用户类型" class="headerlink" title="Linux用户类型"></a>Linux用户类型</h4><p><strong>Linux</strong>  用户类型分为三类：超级用户、系统用户和普通用户。<br><strong>超级用户</strong>：用户名为<strong>root</strong>或<strong>USER ID（UID）</strong>为<strong>0</strong>的账号，具有一切权限，可以操作系统中的所有资源。<strong>Root</strong>用户可以进行基础的文件操作及特殊的系统管理，可以修改系统中的任何文件。<br>系统用户：正常运行系统时使用的账户。每个进程运行在系统里都有一个相应的属主，比如某个进程以何种身份运行，这些身份就是系统里对应的用户账号。<br>普通用户：普通使用者能使用<strong>Linux</strong>的大部分资源，一些特定的权限受到控制。用户只对自己的目录有写权限，读写权限受一定的限制，有效保证了系统安全性。</p>
 <h4 id="Linux文件类型"><a href="#Linux文件类型" class="headerlink" title="Linux文件类型"></a>Linux文件类型</h4><p><strong>Linux</strong>有<strong>4</strong>种基本文件系统类型：普通文件、目录文件、链接文件和特殊文件。通过<strong>ls-l</strong>命令可以返回文件的相关属性，其中第一个字符就是用于标识文件的类型。<br>普通文件包括文本文件、程序代码文件、<strong>Shell</strong>脚本、二进制的可执行文件等，系统中的绝大部分文件都属于这种类型。<br>目录是被作为一个文件来对待，其标识值为<strong>d</strong>。目录下可以包括文件和子目录。</p>
 <p>链接文件其实是一个指向文件的指针，通过链接文件，用户访问的将会是指针所指向的文件。</p>
-<h4 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h4><p>history</p>
-<h5 id="last"><a href="#last" class="headerlink" title="last"></a>last</h5><p><strong>last</strong>   命令用于显示用户最近登录信息。单独执行<strong>last</strong>命令，它会读取<strong>/var/log/wtmp</strong>的文件，并把给该文件的内容记录的登入系统的用户名单全部显示出来。</p>
-<h5 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h5><p><strong>lastb</strong> 命令用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行<strong>lastb</strong>命令，它会读取位于<strong>/var/log</strong>目录下，名称为<strong>btmp</strong>的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。</p>
-<h5 id="lastlog"><a href="#lastlog" class="headerlink" title="lastlog"></a>lastlog</h5><p><strong>lastlog</strong> 命令用于显示系统中所有用户最近一次登录信息。</p>
+<h4 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h4><h5 id="history"><a href="#history" class="headerlink" title="history"></a>history</h5><p>显示历史命令</p>
+<h5 id="last"><a href="#last" class="headerlink" title="last"></a>last</h5><p>用于显示用户最近登录信息。单独执行<strong>last</strong>命令，它会读取<strong>/var/log/wtmp</strong>的文件，并把给该文件的内容记录的登入系统的用户名单全部显示出来。</p>
+<h5 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h5><h5 id="用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行lastb命令，它会读取位于-var-log目录下，名称为btmp的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。"><a href="#用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行lastb命令，它会读取位于-var-log目录下，名称为btmp的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。" class="headerlink" title="用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行lastb命令，它会读取位于/var/log目录下，名称为btmp的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。"></a>用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行<strong>lastb</strong>命令，它会读取位于<strong>/var/log</strong>目录下，名称为<strong>btmp</strong>的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。</h5><h5 id="lastlog"><a href="#lastlog" class="headerlink" title="lastlog"></a>lastlog</h5><p>用于显示系统中所有用户最近一次登录信息。</p>
 <p><strong>lastlog **文件在每次有用户登录时被查询。可以使用</strong>lastlog<strong>命令检查某特定用户上次登录的时间，并格式化输出上次登录日志</strong>/var/log/lastlog<strong>的内容。它根据</strong>UID<strong>排序显示登录名、端口号</strong>（tty）<strong>和上次登录时间。如果一个用户从未登录过，</strong>lastlog<strong>显示</strong>Never logged<strong>。注意需要以</strong>root**身份运行该命令。</p>
 <h5 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h5><p><code>ifconfig   &gt;   ifconfig.txt</code>     （覆盖） </p>
 <p><img src="https://raw.githubusercontent.com/skysec666/skysec666.github.io/Figure-bed/ifconfig.png" alt=""></p>
 <p><code>ifconfig  &gt;&gt;    ifconfig.txt</code>     （追加） </p>
 <p><img src="https://raw.githubusercontent.com/skysec666/skysec666.github.io/Figure-bed/ifconfig1.png" alt=""></p>
+<h5 id="ps-ef"><a href="#ps-ef" class="headerlink" title="ps -ef"></a>ps -ef</h5><p>显示系统及应用进程</p>
 <hr>
 <h3 id="Windows命令"><a href="#Windows命令" class="headerlink" title="Windows命令"></a>Windows命令</h3><h4 id="eventvwr-msc"><a href="#eventvwr-msc" class="headerlink" title="eventvwr.msc"></a>eventvwr.msc</h4><p><strong>eventvwr.msc</strong>命令用于打开事件管理器</p>
 <h4 id="gpedit-msc"><a href="#gpedit-msc" class="headerlink" title="gpedit.msc"></a>gpedit.msc</h4><p><strong>gpedit.msc</strong>命令用于打开本地组策略器</p>
@@ -356,11 +356,11 @@
 <h4 id="通过以下命令查找RDP服务的端口号"><a href="#通过以下命令查找RDP服务的端口号" class="headerlink" title="通过以下命令查找RDP服务的端口号"></a>通过以下命令查找RDP服务的端口号</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist &#x2F;svc | find &quot;TermService&quot;</span><br></pre></td></tr></table></figure>
 
 <h4 id="Windows-cmd-如何下载文件"><a href="#Windows-cmd-如何下载文件" class="headerlink" title="Windows cmd 如何下载文件"></a>Windows cmd 如何下载文件</h4><blockquote>
-<p>1.certutil.exe</p>
-<p>2.powershell</p>
-<p>3.bitsadmin</p>
-<p>4.vbs</p>
-<p>5.ftp</p>
+<p><strong>1.certutil.exe</strong></p>
+<p><strong>2.powershell</strong></p>
+<p><strong>3.bitsadmin</strong></p>
+<p><strong>4.vbs</strong></p>
+<p><strong>5.ftp</strong></p>
 </blockquote>
 <hr>
 <h3 id="WEB容器"><a href="#WEB容器" class="headerlink" title="WEB容器"></a>WEB容器</h3><h4 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h4><p>“低版本的<strong>apache</strong>存在未知扩展名解析漏洞”的说法是错误的，正确的说法应该是使用<strong>module</strong>模式与<strong>php</strong>结合的所有版本 <strong>apache</strong>存在未知扩展名解析漏洞，使用<strong>fastcgi</strong>模式与<strong>php</strong>结合的所有版本<strong>apache</strong>不存在此漏洞。</p>
@@ -411,7 +411,7 @@
 <li><p><strong>宽字节注入</strong></p>
 <p><strong>宽字节注入产生原理以及根本原因</strong></p>
 <p><strong>产生原理</strong></p>
-<p>在数据库使用了宽字符集而<strong>WEB</strong>中没考虑这个问题的情况下，在<strong>WEB</strong>层，由于<strong>0XBF27</strong>是两个字符，在<strong>PHP</strong>中比如<strong>addslash</strong>和<strong>magic_quotes_gpc</strong>开启时，由于会对<strong>0x27</strong>单引号进行转义，因此<strong>0xbf27</strong>会变成<strong>0xbf5c27</strong>,而数据进入数据库中时，由于<strong>0XBF5C</strong>是一个另外的字符，因此<strong>\</strong>转义符号会被前面的<strong>bf</strong>带着”吃掉”，单引号由此逃逸出来可以用来闭合语句。</p>
+<p>在数据库使用了宽字符集而<strong>WEB</strong>中没考虑这个问题的情况下，在<strong>WEB</strong>层，由于<strong>0XBF27</strong>是两个字符，在<strong>PHP</strong>中比如<strong>addslash</strong>和<strong>magic_quotes_gpc</strong>开启时，由于会对<strong>0x27</strong>单引号进行转义，因此<strong>0xbf27</strong>会变成<strong>0xbf5c27</strong>,而数据进入数据库中时，由于<strong>0XBF5C</strong>是一个另外的字符，因此\转义符号会被前面的<strong>bf</strong>带着”吃掉”，单引号由此逃逸出来可以用来闭合语句。</p>
 <p><strong>在哪里编码</strong></p>
 <p><strong>根本原因</strong></p>
 <p><strong>character_set_client</strong>(客户端的字符集)和<strong>character_set_connection</strong>(连接层的字符集)不同,或转换函数如，<strong>iconv、mb_convert_encoding</strong>使用不当。</p>
